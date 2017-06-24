@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketingResearchCognitiveServices", "MarketingResearchCognitiveServices\MarketingResearchCognitiveServices.csproj", "{B030DE8D-0163-4A73-8023-D1AF47C571CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketingResearchCognitiveServices", "MarketingResearchCognitiveServices\MarketingResearchCognitiveServices.csproj", "{AA31C3DD-F2F3-4142-878C-8F5981A455EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA31C3DD-F2F3-4142-878C-8F5981A455EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA31C3DD-F2F3-4142-878C-8F5981A455EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA31C3DD-F2F3-4142-878C-8F5981A455EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA31C3DD-F2F3-4142-878C-8F5981A455EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
