@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketingResearchCognitiveServices", "MarketingResearchCognitiveServices\MarketingResearchCognitiveServices.csproj", "{3FF80B68-DB46-496B-860D-005DA742C2BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketingResearchCognitiveServices", "MarketingResearchCognitiveServices\MarketingResearchCognitiveServices.csproj", "{B030DE8D-0163-4A73-8023-D1AF47C571CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3FF80B68-DB46-496B-860D-005DA742C2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FF80B68-DB46-496B-860D-005DA742C2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FF80B68-DB46-496B-860D-005DA742C2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FF80B68-DB46-496B-860D-005DA742C2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B030DE8D-0163-4A73-8023-D1AF47C571CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
