@@ -10,10 +10,16 @@ namespace AngularSample.Controllers
 
     public class HomeController : Controller
     {
-        private object recordedEmotion;
+        private Emotion[] lastRecordedEmotion;
+        private Emotion willSaveEmo;
+        private DateTime willSaveTime;
+        private bool lastFrameFull = false;
+        private byte[] willSaveImg;
+        private int largestArea = 0;
         private byte[] _receivedImg;
         public async Task getJsonFromImg()
         {
+            // Sends a request to the Emotion API
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "788594a1e9a445f8b1885d61dc5a01ad");
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
@@ -22,7 +28,27 @@ namespace AngularSample.Controllers
             {
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
                 response = await client.PostAsync(uri, content);
+
+                // Stores the Emotion
                 string _jsonString = response.Content.ReadAsStringAsync().Result;
+                lastRecordedEmotion = JsonConvert.DeserializeObject<Emotion[]>(_jsonString);
+
+                // Finds the Face with the largest area, and saves it with willSave...
+                foreach (Emotion e in lastRecordedEmotion) {
+                    if (e.rectangle.Height * e.rectangle.Width > largestArea) {
+                        largestArea = e.rectangle.Height * e.rectangle.Width;
+                        willSaveEmo = e;
+                        willSaveTime = DateTime.Now;
+                        willSaveImg = _receivedImg;
+                    }
+                }
+
+                // Save to database once no on is in frame and reinitialize variables
+                if (lastRecordedEmotion.Length == 0 && largestArea > 0) {
+                    largestArea = 0;
+                    willSaveEmo = null;
+                    willSaveImg = null;
+                }
             }
         }
 
