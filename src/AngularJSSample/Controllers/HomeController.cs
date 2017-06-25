@@ -5,6 +5,9 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace AngularSample.Controllers
 {
@@ -64,14 +67,67 @@ namespace AngularSample.Controllers
                 }
             }
         }
-    private readonly CameraContext _context;
 
-    public HomeController(CameraContext context)
-    {
-      _context = context;
-    }
+        [Route("home/todayinteractions/")]
+        public async Task<JsonResult> GetTodaysInteractions()
+        {
+            EmotionAnalytics emote = new EmotionAnalytics();
+            emote.Anger = _context.Interaction.Where(a => a.Anger > EmotionAnalytics.THRESHOLD).Count();
+            emote.Neutral = _context.Interaction.Where(a => a.Neutral > EmotionAnalytics.THRESHOLD).Count();
+            emote.Surprise = _context.Interaction.Where(a => a.Surprise > EmotionAnalytics.THRESHOLD).Count();
+            emote.Happiness = _context.Interaction.Where(a => a.Happiness > EmotionAnalytics.THRESHOLD).Count();
+            emote.Fear = _context.Interaction.Where(a => a.Fear > EmotionAnalytics.THRESHOLD).Count();
+            emote.Sadness = _context.Interaction.Where(a => a.Sadness > EmotionAnalytics.THRESHOLD).Count();
+            emote.Contempt = _context.Interaction.Where(a => a.Contempt > EmotionAnalytics.THRESHOLD).Count();
+            emote.Disgust = _context.Interaction.Where(a => a.Disgust > EmotionAnalytics.THRESHOLD).Count();
 
-    public IActionResult Index()
+            return new JsonResult (emote);
+        }
+
+        [Route("home/emotiontime/")]
+        public async Task<JsonResult> GetEmotionPercentageTime()
+        {
+            EmotionTimeCollection emoteTimes = new EmotionTimeCollection();
+            emoteTimes.Emotions = new List<EmotionTime>();
+            var j = 0;
+            string query = "select ";
+            for (int i = 4; i < 24; i += 4)
+            {
+                query += $"(Select count(*) From Interaction Where Time > '{DateTime.Now.AddHours(-i)}' AND Time< '{DateTime.Now.AddHours(-(j * 4))}' AND Happiness > 0.60000) as happy{i},";
+                query += $"(Select count(*) From Interaction Where Time > '{DateTime.Now.AddHours(-i)}' AND Time< '{DateTime.Now.AddHours(-(j * 4))}' AND Anger > 0.60000) as anger{i},";
+                query += $"(Select count(*) From Interaction Where Time > '{DateTime.Now.AddHours(-i)}' AND Time< '{DateTime.Now.AddHours(-(j * 4))}' AND Neutral > 0.60000) as neutral{i}";
+                if (j < 4)
+                {
+                    query += ",";
+                }
+
+                j++;
+            }
+            
+            using (var command = _context.Database.GetDbConnection().CreateCommand())
+            {
+                command.CommandText = query;
+                _context.Database.OpenConnection();
+                using (var result = command.ExecuteReader())
+                {
+                    while (result.Read())
+                    {
+                        Console.WriteLine(String.Format("{0}", result[0]));
+                    }
+                    // do something with result
+                }
+            }
+            return new JsonResult(emoteTimes);
+        }
+
+        private readonly CameraContext _context;
+
+        public HomeController(CameraContext context)
+        {
+          _context = context;
+        }
+
+        public IActionResult Index()
         {
             return View();
         }
@@ -90,65 +146,11 @@ namespace AngularSample.Controllers
             return CreatedAtRoute("Get", new { id = value.Data }, value);
         }
 
-        public IActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Error()
         {
             return View("~/Views/Shared/Error.cshtml");
         }
 
-        public IActionResult Directives()
-        {
-            return View();
-        }
-
-        public IActionResult Databinding()
-        {
-            return View();
-        }
-
-        public IActionResult Templates()
-        {
-            return View();
-        }
-
-        public IActionResult Expressions()
-        {
-            return View();
-        }
-        public IActionResult Repeaters()
-        {
-            return View();
-        }
-
-        public IActionResult Repeaters2()
-        {
-            return View();
-        }
-
-        public IActionResult Scope()
-        {
-            return View();
-        }
-
-        public IActionResult Controllers()
-        {
-            return View();
-        }
-
-        public IActionResult Components()
-        {
-            return View();
-        }
-
-        public IActionResult PersonComponent()
-        {
-            return View();
-        }
     }
 }
