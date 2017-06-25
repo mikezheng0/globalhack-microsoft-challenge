@@ -10695,15 +10695,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mike\\.nuget\\packages\\": {}
+    "C:\\Users\\Vincent\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mike\\Documents\\AngularJSSample\\src\\AngularJSSample\\AngularJSSample.csproj",
+      "projectUniqueName": "C:\\globalhack-microsoft-challenge\\src\\AngularJSSample\\AngularJSSample.csproj",
       "projectName": "AngularJSSample",
-      "projectPath": "C:\\Users\\Mike\\Documents\\AngularJSSample\\src\\AngularJSSample\\AngularJSSample.csproj",
-      "outputPath": "C:\\Users\\Mike\\Documents\\AngularJSSample\\src\\AngularJSSample\\obj\\",
+      "projectPath": "C:\\globalhack-microsoft-challenge\\src\\AngularJSSample\\AngularJSSample.csproj",
+      "outputPath": "C:\\globalhack-microsoft-challenge\\src\\AngularJSSample\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
