@@ -13,9 +13,11 @@
                     on-error="webcam.onError(err)"
                     on-stream="webcam.onStream(stream)"></webcam>
             <canvas ng-hide="true" id="snapshot" width="200" height="200"></canvas>
-
-            <button ng-click="webcam.makeSnapshot()">print</button>
-            <img data-ng-src="{{'data:' + fotoContentType + ';base64,' + photo}}" style="max-height: 100px;" ng-if="photo" />
+            <div style="padding:14px;">
+             <button style="color:black; background:white;" ng-click="webcam.makeSnapshot()">print</button>   
+            <img data-ng-src="{{'data:' + fotoContentType + ';base64,' + photo}}" style="max-height: 100px;" ng-if="photo" />     
+            <img id="mood" style="height: 100px;" src="">
+            </div>
             <div class="pager"></div>
 
         </div>

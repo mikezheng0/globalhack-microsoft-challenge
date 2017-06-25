@@ -9,7 +9,7 @@ angular.module('myApp.view4', ['ngRoute'])
   });
 }])
 
-.controller('View4Ctrl', ['$scope','WebcamService', function ($scope, WebcamService) {
+    .controller('View4Ctrl', ['$scope', 'WebcamService', '$http', function ($scope, WebcamService, $http) {
         $scope.webcam = WebcamService.webcam;
         //override function for be call when capture is finalized
         $scope.webcam.success = function (image, type) {
@@ -17,4 +17,5 @@ angular.module('myApp.view4', ['ngRoute'])
             $scope.fotoContentType = type;
             $scope.showweb = false;
         };
+
  }]);

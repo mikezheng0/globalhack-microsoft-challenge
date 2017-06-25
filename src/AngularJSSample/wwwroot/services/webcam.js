@@ -27,7 +27,24 @@ function WebcamService($http) {
 
     var sendSnapshotToServer = function sendSnapshotToServer(imgBase64) {
         webcam.snapshotData = imgBase64;
-        $http.post("/home/post", { Data: imgBase64.replace(/^data:image\/[a-z]+;base64,/, "") });
+        $http.post("/home/post", { Data: imgBase64.replace(/^data:image\/[a-z]+;base64,/, "") }).then(function (data) {
+            var moodelem = document.querySelector('#mood');
+            var max = 0;
+            var maxMood;
+            if (data.data.length > 0){
+
+                for (var mood in data.data[0].scores) {
+                    if (data.data[0].scores[mood] > max) {
+                        max = data.data[0].scores[mood];
+                        maxMood = mood;
+                    }
+                }
+                moodelem.src = "./assets/"+maxMood+".png"
+            } else {
+                moodelem.src = "./assets/" + "cross" + ".png"
+            }
+            
+        });
     };
 
     webcam.makeSnapshot = function() {

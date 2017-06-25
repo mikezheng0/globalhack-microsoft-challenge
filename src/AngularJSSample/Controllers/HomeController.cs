@@ -16,7 +16,7 @@ namespace AngularSample.Controllers
     {
         private Emotion[] lastRecordedEmotion;
         private byte[] _receivedImg;
-        public async Task getJsonFromImg()
+        public async Task<Emotion[]> getJsonFromImg()
         {
             // Sends a request to the Emotion API
             var client = new HttpClient();
@@ -65,6 +65,7 @@ namespace AngularSample.Controllers
                     HttpContext.Session.Clear();    
                     // TODO save to database
                 }
+                return lastRecordedEmotion;
             }
         }
 
@@ -187,17 +188,17 @@ namespace AngularSample.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]CameraData value)
+        public async Task<JsonResult> Post([FromBody]CameraData value)
         {
 
             if (value == null)
             {
-                return BadRequest();
+                //return BadRequest();
             }
             _receivedImg = Convert.FromBase64String(value.Data);
-            await getJsonFromImg();
+            Emotion[] emotes = await getJsonFromImg();
             
-            return CreatedAtRoute("Get", new { id = value.Data }, value);
+            return new JsonResult(emotes);
         }
 
 
