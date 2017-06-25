@@ -11,11 +11,6 @@ namespace AngularSample.Controllers
     public class HomeController : Controller
     {
         private Emotion[] lastRecordedEmotion;
-        private Emotion willSaveEmo;
-        private DateTime willSaveTime;
-        private bool lastFrameFull = false;
-        private byte[] willSaveImg;
-        private int largestArea = 0;
         private byte[] _receivedImg;
         public async Task getJsonFromImg()
         {
@@ -35,19 +30,19 @@ namespace AngularSample.Controllers
 
                 // Finds the Face with the largest area, and saves it with willSave...
                 foreach (Emotion e in lastRecordedEmotion) {
-                    if (e.rectangle.Height * e.rectangle.Width > largestArea) {
-                        largestArea = e.rectangle.Height * e.rectangle.Width;
-                        willSaveEmo = e;
-                        willSaveTime = DateTime.Now;
-                        willSaveImg = _receivedImg;
+                    if (TempData["largestArea"] == null || e.FaceRectangle.Height * e.FaceRectangle.Width > (int)TempData["largestArea"]) {
+                        TempData["largestArea"] = e.FaceRectangle.Height * e.FaceRectangle.Width;
+                        TempData["willSaveEmo"] = e;
+                        TempData["willSaveTime"] = DateTime.Now;
+                        TempData["willSaveImg"] = _receivedImg;
                     }
                 }
-
                 // Save to database once no on is in frame and reinitialize variables
-                if (lastRecordedEmotion.Length == 0 && largestArea > 0) {
-                    largestArea = 0;
-                    willSaveEmo = null;
-                    willSaveImg = null;
+                if (lastRecordedEmotion.Length == 0 && TempData["largestArea"] != null && (int) TempData["largestArea"] > 0) {
+                    TempData["largestArea"] = 0;
+                    TempData["willSaveEmo"] = null;
+                    TempData["willSaveImg"] = null;
+                    // TODO save to database
                 }
             }
         }

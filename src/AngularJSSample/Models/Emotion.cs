@@ -8,7 +8,7 @@ namespace AngularJSSample.Models
 {
     public class Emotion
     {
-        public FaceRectangle rectangle { get; set; }
-        public EmotionScore score { get; set; }
+        public FaceRectangle FaceRectangle { get; set; }
+        public EmotionScore Scores { get; set; }
     }
 }
