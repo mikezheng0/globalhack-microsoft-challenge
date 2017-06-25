@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AngularJSSample.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace AngularSample
 {
@@ -26,7 +28,10 @@ namespace AngularSample
         {
             // Add MVC services to the services container.
             services.AddMvc();
-        }
+
+          var connection = @"Server=tcp:market-resource-server.database.windows.net,1433;Initial Catalog=MarketResearchDB;Persist Security Info=False;User ID=login;Password=Qwerty1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+          services.AddDbContext<CameraContext>(options => options.UseSqlServer(connection));
+    }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
