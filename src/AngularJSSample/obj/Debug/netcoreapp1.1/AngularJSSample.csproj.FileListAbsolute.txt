@@ -1,0 +1,11 @@
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.deps.json
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.runtimeconfig.json
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.runtimeconfig.dev.json
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.dll
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.pdb
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.csprojResolveAssemblyReference.cache
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.AssemblyInfo.cs
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.dll
+C:\Users\Mike\Documents\AngularJSSample\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.pdb
