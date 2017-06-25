@@ -13,13 +13,7 @@ angular.module('myApp.view1', ['ngRoute','chart.js'])
 
         $scope.labels = [];
         $scope.data = [];
-        $scope.webcam = WebcamService.webcam;
-        //override function for be call when capture is finalized
-        $scope.webcam.success = function(image, type) {
-          $scope.photo = image;
-          $scope.fotoContentType = type;
-          $scope.showweb = false;
-        };
+        
 
         $http.get("/home/todayinteractions").then(function (data) {
             if (data.status == 200) {

@@ -1,0 +1,23 @@
+<div class="container view">
+    <div class="col-md-8">
+        <smart-filter></smart-filter>
+    </div>
+    <div class="col-md-4 text-right dashboard-header">
+        Welcome To Your Dashboard
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <webcam class="image-card"
+                    channel="webcam.channel"
+                    on-streaming="webcam.onSuccess()"
+                    on-error="webcam.onError(err)"
+                    on-stream="webcam.onStream(stream)"></webcam>
+            <canvas ng-hide="true" id="snapshot" width="200" height="200"></canvas>
+
+            <button ng-click="webcam.makeSnapshot()">print</button>
+            <img data-ng-src="{{'data:' + fotoContentType + ';base64,' + photo}}" style="max-height: 100px;" ng-if="photo" />
+            <div class="pager"></div>
+
+        </div>
+    </div>
+    </div>

@@ -8,7 +8,7 @@ angular.module('myApp.view1')
             cutoutPercentage: 70,
             legend: {
                 display: true,
-                position: 'top',
+                position: 'bottom',
             },
             title: {
                 display: true,
