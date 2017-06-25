@@ -1,5 +1,6 @@
 ﻿using AngularJSSample.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace AngularSample.Controllers
 
     public class HomeController : Controller
     {
-        private string _jsonString;
+        private object recordedEmotion;
         private byte[] _receivedImg;
         public async Task getJsonFromImg()
         {
@@ -21,7 +22,7 @@ namespace AngularSample.Controllers
             {
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
                 response = await client.PostAsync(uri, content);
-                _jsonString = response.Content.ReadAsStringAsync().Result;
+                string _jsonString = response.Content.ReadAsStringAsync().Result;
             }
         }
 
