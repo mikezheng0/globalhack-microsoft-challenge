@@ -13,7 +13,7 @@ angular.module('myApp.view1', ['ngRoute','chart.js'])
 
         $scope.labels = [];
         $scope.data = [];
-        
+        $scope.colors = ["#8b87a3", "#b5b2c4", "#7564f6", "#b4aaf0", "#d8d4f2", "#80b1ff", "#b4aaf0","#4c8ff8"];
 
         $http.get("/home/todayinteractions").then(function (data) {
             if (data.status == 200) {

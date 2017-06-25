@@ -9,6 +9,9 @@ angular.module('myApp.view1')
             legend: {
                 display: true,
                 position: 'bottom',
+                labels: {
+                    fontColor: "white"
+                }
             },
             title: {
                 display: true,

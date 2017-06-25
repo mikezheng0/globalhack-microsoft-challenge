@@ -25,6 +25,10 @@ angular.module('myApp.view3', ['ngRoute'])
         legend: {
             display: true,
             position: 'right',
+            labels: {
+                fontColor: "white", 
+                fontSize: 18
+            }
         },
         scales: {
             yAxes: [
@@ -32,13 +36,21 @@ angular.module('myApp.view3', ['ngRoute'])
                     id: 'y-axis-1',
                     type: 'linear',
                     display: true,
-                    position: 'left'
+                    position: 'left',
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                    }
                 },
                 {
                     id: 'y-axis-2',
                     type: 'linear',
                     display: true,
-                    position: 'right'
+                    position: 'right',
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 18
+                    }
                 }
             ]
         }
