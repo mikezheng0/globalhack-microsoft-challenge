@@ -8,9 +8,10 @@ using AngularJSSample.Models;
 namespace AngularJSSample.Migrations
 {
     [DbContext(typeof(CameraContext))]
-    partial class CameraContextModelSnapshot : ModelSnapshot
+    [Migration("20170625080640_AwksMigration")]
+    partial class AwksMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

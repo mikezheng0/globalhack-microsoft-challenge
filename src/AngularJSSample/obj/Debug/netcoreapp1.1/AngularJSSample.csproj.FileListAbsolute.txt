@@ -9,3 +9,14 @@ C:\Users\Mike\Documents\globalhack-microsoft-challenge\src\AngularJSSample\obj\D
 C:\Users\Mike\Documents\globalhack-microsoft-challenge\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.AssemblyInfo.cs
 C:\Users\Mike\Documents\globalhack-microsoft-challenge\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.dll
 C:\Users\Mike\Documents\globalhack-microsoft-challenge\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.pdb
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.deps.json
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.runtimeconfig.json
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.runtimeconfig.dev.json
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.dll
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\bin\Debug\netcoreapp1.1\AngularJSSample.pdb
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.AssemblyInfo.cs
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.dll
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.pdb
+C:\Users\matt_\Documents\Visual Studio 2017\Projects\MarketingResearchCognitiveServices\src\AngularJSSample\obj\Debug\netcoreapp1.1\AngularJSSample.csprojResolveAssemblyReference.cache

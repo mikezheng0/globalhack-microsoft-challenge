@@ -14,9 +14,6 @@ namespace AngularJSSample.Models
     { }
 
     public DbSet<Interaction> Interaction { get; set; }
-    public DbSet<Emotions> Emotions { get; set; }
-
-    public DbSet<Cordinates> Cordinates { get; set; }
   }
 
   public class Interaction
@@ -25,38 +22,21 @@ namespace AngularJSSample.Models
     public byte[] Image { get; set; }
     //public int CustomerId { get; set; }
     public DateTime Time { get; set; }
-    public Emotions Emotions { get; set; }
-    public Cordinates Cordinates { get; set; }
-  }
 
-  public class Emotions
-  {
-    public float Anger { get; set; }
-    public float Contempt { get; set; }
-    public float Fear { get; set; }
-    public float Happiness { get; set; }
-    public float Nuetral { get; set; }
-    public float Sadness { get; set; }
-    public float Disguest { get; set; }
-    public float Suprise { get; set; }
-    public int Id { get; set; }
+        public float Anger { get; set; }
+        public float Contempt { get; set; }
+        public float Fear { get; set; }
+        public float Happiness { get; set; }
+        public float Neutral { get; set; }
+        public float Sadness { get; set; }
+        public float Disgust { get; set; }
+        public float Surprise { get; set; }
 
-    public Interaction Interaction { get; set; }
-    public int InteractionId { get; set; }
+        public int Left { get; set; }
+        public int Top { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
 
-  }
-
-  public class Cordinates
-  {
-    public int Id { get; set; }
-    public int X { get; set; }
-    public int Y { get; set; }
-    public int Height { get; set; }
-    public int Weight { get; set; }
-
-    public Interaction Interaction { get; set; }
-    public int InteractionId { get; set; }
-  }
-
+    }
 
 }

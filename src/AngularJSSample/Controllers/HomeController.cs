@@ -40,7 +40,24 @@ namespace AngularSample.Controllers
                 }
                 // Save to database once no on is in frame and reinitialize variables
                 if (HttpContext.Session.GetInt32("largestArea") != null && lastRecordedEmotion.Length == 0 && HttpContext.Session.GetInt32("largestArea") > 0) {
-                    _context.Add(new Interaction { Time = HttpContext.Session.GetObjectFromJson<DateTime>("willSaveTime"), Image = HttpContext.Session.GetObjectFromJson<byte[]>("willSaveImg") });
+                    Emotion emote = HttpContext.Session.GetObjectFromJson<Emotion>("willSaveEmo");
+                    _context.Add(new Interaction {
+                        Time = HttpContext.Session.GetObjectFromJson<DateTime>("willSaveTime"),
+                        Image = HttpContext.Session.GetObjectFromJson<byte[]>("willSaveImg"),
+                        Anger = emote.Scores.Anger,
+                        Sadness = emote.Scores.Sadness,
+                        Fear = emote.Scores.Fear,
+                        Contempt = emote.Scores.Contempt,
+                        Happiness = emote.Scores.Happiness,
+                        Surprise = emote.Scores.Surprise,
+                        Disgust = emote.Scores.Disgust,
+                        Neutral = emote.Scores.Neutral,
+                        Left = emote.FaceRectangle.Left,
+                        Width = emote.FaceRectangle.Width,
+                        Top = emote.FaceRectangle.Top,
+                        Height = emote.FaceRectangle.Height,
+
+                    });
                     await _context.SaveChangesAsync();
                     HttpContext.Session.Clear();    
                     // TODO save to database

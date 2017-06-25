@@ -8,9 +8,10 @@ using AngularJSSample.Models;
 namespace AngularJSSample.Migrations
 {
     [DbContext(typeof(CameraContext))]
-    partial class CameraContextModelSnapshot : ModelSnapshot
+    [Migration("20170625075752_ThirdMigration")]
+    partial class ThirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -25,7 +26,7 @@ namespace AngularJSSample.Migrations
 
                     b.Property<float>("Contempt");
 
-                    b.Property<float>("Disgust");
+                    b.Property<float>("Disguest");
 
                     b.Property<float>("Fear");
 
@@ -35,19 +36,19 @@ namespace AngularJSSample.Migrations
 
                     b.Property<byte[]>("Image");
 
-                    b.Property<int>("Left");
-
-                    b.Property<float>("Neutral");
+                    b.Property<float>("Nuetral");
 
                     b.Property<float>("Sadness");
 
-                    b.Property<float>("Surprise");
+                    b.Property<float>("Suprise");
 
                     b.Property<DateTime>("Time");
 
-                    b.Property<int>("Top");
+                    b.Property<int>("Weight");
 
-                    b.Property<int>("Width");
+                    b.Property<int>("X");
+
+                    b.Property<int>("Y");
 
                     b.HasKey("Id");
 
