@@ -46,9 +46,14 @@ namespace AngularSample.Controllers
                 }
             }
         }
+    private readonly CameraContext _context;
 
+    public HomeController(CameraContext context)
+    {
+      _context = context;
+    }
 
-        public IActionResult Index()
+    public IActionResult Index()
         {
             return View();
         }
