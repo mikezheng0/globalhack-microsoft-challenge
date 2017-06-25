@@ -40,8 +40,9 @@ namespace AngularSample.Controllers
                 }
                 // Save to database once no on is in frame and reinitialize variables
                 if (HttpContext.Session.GetInt32("largestArea") != null && lastRecordedEmotion.Length == 0 && HttpContext.Session.GetInt32("largestArea") > 0) {
-          
-                    HttpContext.Session.Clear();
+                    _context.Add(new Interaction { Time = HttpContext.Session.GetObjectFromJson<DateTime>("willSaveTime"), Image = HttpContext.Session.GetObjectFromJson<byte[]>("willSaveImg") });
+                    await _context.SaveChangesAsync();
+                    HttpContext.Session.Clear();    
                     // TODO save to database
                 }
             }

@@ -23,7 +23,7 @@ namespace AngularJSSample.Models
   {
     public int Id { get; set; }
     public byte[] Image { get; set; }
-    public int CustomerId { get; set; }
+    //public int CustomerId { get; set; }
     public DateTime Time { get; set; }
     public Emotions Emotions { get; set; }
     public Cordinates Cordinates { get; set; }
