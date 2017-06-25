@@ -1,0 +1,6 @@
+*.suo
+*.user
+*.userosscache
+bin/
+.vs/
+src/AngularJSSample/obj/Debug/netcoreapp1.1/CoreCompileInputs.cache

@@ -4,9 +4,9 @@ angular
     .module('myApp')
     .factory('WebcamService', WebcamService);
 
-WebcamService.$inject = [];
+WebcamService.$inject = ['$http'];
 
-function WebcamService () {
+function WebcamService($http) {
     var webcam = {};
     webcam.isTurnOn = false;
     webcam.patData = null;
@@ -27,6 +27,7 @@ function WebcamService () {
 
     var sendSnapshotToServer = function sendSnapshotToServer(imgBase64) {
         webcam.snapshotData = imgBase64;
+        $http.post("/home/post", { Data: imgBase64.replace(/^data:image\/[a-z]+;base64,/, "") });
     };
 
     webcam.makeSnapshot = function() {
