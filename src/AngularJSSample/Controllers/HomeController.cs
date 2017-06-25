@@ -12,11 +12,6 @@ namespace AngularSample.Controllers
     public class HomeController : Controller
     {
         private Emotion[] lastRecordedEmotion;
-        private Emotion willSaveEmo;
-        private DateTime willSaveTime;
-        private bool lastFrameFull = false;
-        private byte[] willSaveImg;
-        private int largestArea = 0;
         private byte[] _receivedImg;
         public async Task getJsonFromImg()
         {
@@ -33,29 +28,32 @@ namespace AngularSample.Controllers
                 // Stores the Emotion
                 string _jsonString = response.Content.ReadAsStringAsync().Result;
                 lastRecordedEmotion = JsonConvert.DeserializeObject<Emotion[]>(_jsonString);
-                String hapy = HttpContext.Session.GetString("largestArea");
-                HttpContext.Session.SetString("largestArea", "Ben Rules!");
                 // Finds the Face with the largest area, and saves it with willSave...
                 foreach (Emotion e in lastRecordedEmotion) {
-                    if (e.rectangle.Height * e.rectangle.Width > largestArea) {
-                        largestArea = e.rectangle.Height * e.rectangle.Width;
-                        willSaveEmo = e;
-                        willSaveTime = DateTime.Now;
-                        willSaveImg = _receivedImg;
+                    if (HttpContext.Session.GetInt32("largestArea") == null || e.FaceRectangle.Height * e.FaceRectangle.Width > HttpContext.Session.GetInt32("largestArea")) {
+                        HttpContext.Session.SetInt32("largestArea", e.FaceRectangle.Height * e.FaceRectangle.Width);
+                        
+                        HttpContext.Session.SetObjectAsJson("willSaveEmo", e);
+                        HttpContext.Session.SetObjectAsJson("willSaveTime", DateTime.Now);
+                        HttpContext.Session.SetObjectAsJson("willSaveImg", _receivedImg);
                     }
                 }
-
                 // Save to database once no on is in frame and reinitialize variables
-                if (lastRecordedEmotion.Length == 0 && largestArea > 0) {
-                    largestArea = 0;
-                    willSaveEmo = null;
-                    willSaveImg = null;
+                if (HttpContext.Session.GetInt32("largestArea") != null && lastRecordedEmotion.Length == 0 && HttpContext.Session.GetInt32("largestArea") > 0) {
+          
+                    HttpContext.Session.Clear();
+                    // TODO save to database
                 }
             }
         }
+    private readonly CameraContext _context;
 
+    public HomeController(CameraContext context)
+    {
+      _context = context;
+    }
 
-        public IActionResult Index()
+    public IActionResult Index()
         {
             return View();
         }
