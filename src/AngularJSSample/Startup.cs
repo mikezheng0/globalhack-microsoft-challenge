@@ -28,8 +28,9 @@ namespace AngularSample
         {
             // Add MVC services to the services container.
             services.AddMvc();
-
-          var connection = @"Server=tcp:market-resource-server.database.windows.net,1433;Initial Catalog=MarketResearchDB;Persist Security Info=False;User ID=login;Password=Qwerty1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
+            var connection = @"Server=tcp:market-resource-server.database.windows.net,1433;Initial Catalog=MarketResearchDB;Persist Security Info=False;User ID=login;Password=Qwerty1234;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
           services.AddDbContext<CameraContext>(options => options.UseSqlServer(connection));
     }
 
@@ -52,7 +53,7 @@ namespace AngularSample
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
-
+            app.UseSession();
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
             {

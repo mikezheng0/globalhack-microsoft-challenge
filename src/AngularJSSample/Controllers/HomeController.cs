@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace AngularSample.Controllers
 {
@@ -32,7 +33,8 @@ namespace AngularSample.Controllers
                 // Stores the Emotion
                 string _jsonString = response.Content.ReadAsStringAsync().Result;
                 lastRecordedEmotion = JsonConvert.DeserializeObject<Emotion[]>(_jsonString);
-
+                String hapy = HttpContext.Session.GetString("largestArea");
+                HttpContext.Session.SetString("largestArea", "Ben Rules!");
                 // Finds the Face with the largest area, and saves it with willSave...
                 foreach (Emotion e in lastRecordedEmotion) {
                     if (e.rectangle.Height * e.rectangle.Width > largestArea) {
