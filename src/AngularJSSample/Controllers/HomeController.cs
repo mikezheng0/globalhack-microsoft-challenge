@@ -103,21 +103,75 @@ namespace AngularSample.Controllers
 
                 j++;
             }
-            
-            using (var command = _context.Database.GetDbConnection().CreateCommand())
+
+      /*using (var command = _context.Database.GetDbConnection().CreateCommand())
+      {
+          command.CommandText = query;
+          _context.Database.OpenConnection();
+          using (var result = command.ExecuteReader())
+          {
+              while (result.Read())
+              {
+                  Console.WriteLine(String.Format("{0}", result[0]));
+              }
+              // do something with result
+          }
+      }*/
+      using (var connection = _context.Database.GetDbConnection())
+      {
+        connection.Open();
+
+        using (var command = connection.CreateCommand())
+        {
+          command.CommandText = query;
+          using (var result = command.ExecuteReader())
+          {
+            while (result.Read())
             {
-                command.CommandText = query;
-                _context.Database.OpenConnection();
-                using (var result = command.ExecuteReader())
-                {
-                    while (result.Read())
-                    {
-                        Console.WriteLine(String.Format("{0}", result[0]));
-                    }
-                    // do something with result
-                }
+              EmotionTime emoteTime = new EmotionTime();
+              emoteTime.EmotionCounts = new EmotionAnalytics();
+              emoteTime.HoursAgo = 4;
+              emoteTime.EmotionCounts.Happiness = (int)result[0];
+              emoteTime.EmotionCounts.Anger = (int)(result[1]);
+              emoteTime.EmotionCounts.Neutral = (int)result[2];
+              emoteTimes.Emotions.Add(emoteTime);
+              emoteTime = new EmotionTime();
+              emoteTime.EmotionCounts = new EmotionAnalytics();
+              emoteTime.HoursAgo = 8;
+              emoteTime.EmotionCounts.Happiness = (int)result[3];
+              emoteTime.EmotionCounts.Anger = (int)(result[4]);
+              emoteTime.EmotionCounts.Neutral = (int)result[5];
+              emoteTimes.Emotions.Add(emoteTime);
+              emoteTime = new EmotionTime();
+              emoteTime.EmotionCounts = new EmotionAnalytics();
+              emoteTime.HoursAgo = 12;
+              emoteTime.EmotionCounts.Happiness = (int)result[6];
+              emoteTime.EmotionCounts.Anger = (int)(result[7]);
+              emoteTime.EmotionCounts.Neutral = (int)result[8];
+              emoteTimes.Emotions.Add(emoteTime);
+              emoteTime = new EmotionTime();
+              emoteTime.EmotionCounts = new EmotionAnalytics();
+              emoteTime.HoursAgo = 16;
+              emoteTime.EmotionCounts.Happiness = (int)result[9];
+              emoteTime.EmotionCounts.Anger = (int)(result[10]);
+              emoteTime.EmotionCounts.Neutral = (int)result[11];
+              emoteTimes.Emotions.Add(emoteTime);
+              emoteTime = new EmotionTime();
+              emoteTime.EmotionCounts = new EmotionAnalytics();
+              emoteTime.HoursAgo = 20;
+              emoteTime.EmotionCounts.Happiness = (int)result[12];
+              emoteTime.EmotionCounts.Anger = (int)(result[13]);
+              emoteTime.EmotionCounts.Neutral = (int)result[14];
+              emoteTimes.Emotions.Add(emoteTime);
             }
-            return new JsonResult(emoteTimes);
+            // do something with result
+          }
+        }
+
+        connection.Close();
+      }
+
+      return new JsonResult(emoteTimes);
         }
 
         private readonly CameraContext _context;
